@@ -67,6 +67,8 @@
 
 #define EV_EMASK_EPERM 0x80
 
+int ev_backend_fd = -1;
+
 static void
 epoll_modify (EV_P_ int fd, int oev, int nev)
 {
@@ -232,6 +234,7 @@ epoll_init (EV_P_ int flags)
   if (backend_fd < 0)
     return 0;
 
+  ev_backend_fd = backend_fd;
   fcntl (backend_fd, F_SETFD, FD_CLOEXEC);
 
   backend_fudge  = 0.; /* kernel sources seem to indicate this to be zero */

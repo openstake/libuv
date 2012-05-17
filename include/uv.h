@@ -326,6 +326,7 @@ struct uv_err_s {
   int sys_errno_;
 };
 
+UV_EXTERN int uv_backend_fd(void);
 
 /*
  * Most functions return boolean: 0 for success and -1 for failure.

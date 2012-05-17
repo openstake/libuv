@@ -34,6 +34,12 @@
 
 #define XX(uc, lc) case UV_##uc: return sizeof(uv_##lc##_t);
 
+extern int ev_backend_fd;
+
+int uv_backend_fd(void) {
+  return ev_backend_fd;
+}
+
 size_t uv_handle_size(uv_handle_type type) {
   switch (type) {
     UV_HANDLE_TYPE_MAP(XX)

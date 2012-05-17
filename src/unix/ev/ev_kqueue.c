@@ -66,6 +66,7 @@
 # define NOTE_REVOKE  0x40
 #endif
 
+int ev_backend_fd = -1;
 
 extern void
 uv__kqueue_hack (EV_P_ int fflags, ev_io *w);
@@ -198,6 +199,7 @@ kqueue_init (EV_P_ int flags)
   if ((backend_fd = kqueue ()) < 0)
     return 0;
 
+  ev_backend_fd = backend_fd;
   fcntl (backend_fd, F_SETFD, FD_CLOEXEC); /* not sure if necessary, hopefully doesn't hurt */
 
   backend_fudge  = 0.;
