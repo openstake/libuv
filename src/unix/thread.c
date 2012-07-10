@@ -198,7 +198,7 @@ int uv_sem_trywait(uv_sem_t* sem) {
   interval.tv_sec = 0;
   interval.tv_nsec = 0;
 
-  if (semaphore_timedwait(*sem, interval) == KERN_SUCCESS) {
+  if (semaphore_timedwait(*sem, interval) == KERN_SUCCESS)
     return 0;
   else
     return -1;
